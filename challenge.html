@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>クリエット チャレンジ課題</title>
+<style>
+  :root {
+    --orange: #FF6B1A;
+    --orange-light: #FFF3EC;
+    --canva: #7B2FBE;
+    --canva-light: #F5EEFF;
+    --canva-mid: #C9A7F0;
+    --scratch: #FF6B1A;
+    --scratch-light: #FFF3EC;
+    --scratch-mid: #FFBA94;
+    --mbot: #1A7BFF;
+    --mbot-light: #EAF2FF;
+    --mbot-mid: #90BFFF;
+    --challenge: #FFB800;
+    --challenge-light: #FFFBEA;
+    --challenge-dark: #CC8800;
+    --green: #00B86B;
+    --green-light: #E6FFF5;
+    --blue: #1A7BFF;
+    --purple: #7B2FBE;
+    --dark: #1A1A2E;
+    --gray: #F5F5F7;
+    --border: #E8E8E8;
+    --text: #2D2D2D;
+    --sub: #6B7280;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background: #F7F7FA;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: linear-gradient(135deg, #1A1A2E 0%, #2D1B69 60%, #4A2090 100%);
+    color: white;
+    padding: 44px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 280px; height: 280px; border-radius: 50%;
+    background: rgba(123,47,190,0.3);
+  }
+  .header::after {
+    content: '';
+    position: absolute; bottom: -80px; left: 30%;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,107,26,0.2);
+  }
+  .header-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,184,0,0.2); border: 1px solid rgba(255,184,0,0.5);
+    border-radius: 20px; padding: 4px 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    color: #FFD060; margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 28px; font-weight: 900; letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .header p { font-size: 14px; opacity: 0.8; }
+  .header-meta {
+    display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;
+  }
+  .meta-badge {
+    background: rgba(255,255,255,0.12); border-radius: 8px;
+    padding: 5px 12px; font-size: 12px; font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  /* ===== LEGEND ===== */
+  .legend {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 16px 40px;
+    display: flex; gap: 28px; align-items: center; flex-wrap: wrap;
+  }
+  .legend-title { font-size: 12px; font-weight: 700; color: var(--sub); letter-spacing: 0.5px; }
+  .legend-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600;
+  }
+  .legend-dot {
+    width: 28px; height: 18px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+  }
+  .ld-learn { background: #F0F0F0; color: #555; }
+  .ld-challenge { background: var(--challenge-light); border: 1px solid var(--challenge); color: var(--challenge-dark); }
+
+  /* ===== CONTAINER ===== */
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  /* ===== LEVEL BLOCK ===== */
+  .level-block { margin-bottom: 56px; }
+
+  .level-heading {
+    display: flex; align-items: center; gap: 16px;
+    padding: 20px 28px;
+    border-radius: 16px 16px 0 0;
+    position: relative; overflow: hidden;
+  }
+  .lv-初級 { background: linear-gradient(135deg, #00B86B, #00E090); }
+  .lv-中級 { background: linear-gradient(135deg, #1A7BFF, #4DAAFF); }
+  .lv-上級 { background: linear-gradient(135deg, #FF6B1A, #FFAA55); }
+  .lv-超上級 { background: linear-gradient(135deg, #7B2FBE, #B060EE); }
+
+  .lv-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    background: rgba(255,255,255,0.25); border-radius: 20px;
+    padding: 3px 10px; color: white; opacity: 0.9;
+  }
+  .lv-title {
+    font-size: 22px; font-weight: 900; color: white; letter-spacing: -0.3px;
+  }
+  .lv-desc {
+    font-size: 13px; color: rgba(255,255,255,0.85); margin-left: auto;
+    font-weight: 500;
+  }
+
+  /* ===== TOOL SECTIONS ===== */
+  .tool-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+  }
+
+  .tool-section { background: white; border-right: 1px solid var(--border); }
+  .tool-section:last-child { border-right: none; }
+
+  .tool-header {
+    padding: 14px 20px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 2px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+    background: white;
+  }
+  .th-canva { border-bottom-color: var(--canva); }
+  .th-scratch { border-bottom-color: var(--scratch); }
+  .th-mbot { border-bottom-color: var(--mbot); }
+
+  .tool-icon {
+    width: 34px; height: 34px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 900; color: white;
+    flex-shrink: 0;
+  }
+  .ti-canva { background: var(--canva); }
+  .ti-scratch { background: var(--scratch); }
+  .ti-mbot { background: var(--mbot); }
+
+  .tool-header-name { font-size: 15px; font-weight: 800; }
+  .tool-header-theme { font-size: 11px; color: var(--sub); }
+
+  .tool-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+
+  /* ===== ITEM CARD ===== */
+  .item-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .learn-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 12px 14px;
+    background: white;
+  }
+  .learn-num {
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800; color: white;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .ln-canva { background: var(--canva); }
+  .ln-scratch { background: var(--scratch); }
+  .ln-mbot { background: var(--mbot); }
+
+  .learn-text { font-size: 13px; font-weight: 600; line-height: 1.45; flex: 1; }
+
+  /* ===== CHALLENGE ROW ===== */
+  .challenge-row {
+    background: var(--challenge-light);
+    border-top: 1px dashed #FFD060;
+    padding: 10px 14px 12px;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .challenge-label {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--challenge);
+    color: white; font-size: 10px; font-weight: 800;
+    padding: 3px 8px; border-radius: 20px;
+    white-space: nowrap; flex-shrink: 0; margin-top: 1px;
+    letter-spacing: 0.3px;
+  }
+  .challenge-text {
+    font-size: 12.5px; color: #4A3000; line-height: 1.5; flex: 1;
+    font-weight: 500;
+  }
+
+  /* ===== EMPTY (no tool at this level) ===== */
+  .tool-section.empty {
+    background: #FAFAFA;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 200px;
+  }
+  .empty-msg {
+    text-align: center; color: #CCC; font-size: 13px;
+    padding: 24px;
+  }
+  .empty-msg .big { font-size: 32px; display: block; margin-bottom: 8px; }
+
+  /* ===== TRANSITION BOX ===== */
+  .transition-box {
+    margin-top: 12px;
+    background: var(--gray);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 12.5px;
+    color: var(--sub);
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .transition-box strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 12px; }
+
+  /* ===== PRINT HINT ===== */
+  .print-hint {
+    background: white; border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 20px;
+    font-size: 12px; color: var(--sub);
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  /* ===== HEADER NAV ===== */
+  .header-nav {
+    display: flex;
+    gap: 4px;
+    margin-top: 24px;
+    position: relative;
+    z-index: 2;
+  }
+  .header-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    border-radius: 8px 8px 0 0;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-bottom: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .header-nav a:hover {
+    background: rgba(255,255,255,0.22);
+    color: white;
+  }
+  .header-nav a.active {
+    background: rgba(255,255,255,0.28);
+    color: white;
+    border-color: rgba(255,255,255,0.35);
+  }
+  .nav-divider {
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+    margin: 0 -40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--dark); color: white;
+    padding: 28px 40px; margin-top: 8px;
+  }
+  .footer p { font-size: 12px; opacity: 0.6; margin-top: 4px; }
+  .footer strong { font-size: 16px; color: var(--challenge); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">⚡ CHALLENGE CURRICULUM</div>
+  <h1>チャレンジ課題</h1>
+  <p>各学習項目の直後に取り組む「1アイテム = 1チャレンジ」設計</p>
+  <div class="header-meta">
+    <span class="meta-badge">🎨 Canva</span>
+    <span class="meta-badge">🐱 Scratch</span>
+    <span class="meta-badge">🤖 mBot</span>
+    <span class="meta-badge">📊 4レベル × 全30チャレンジ</span>
+    <span class="meta-badge">📌 直前の学習内容のみで達成可能</span>
+  </div>
+  <nav class="header-nav">
+    <a href="index.html">📋 カリキュラム構成</a>
+    <a href="challenge.html" class="active">⚡ チャレンジ課題</a>
+  </nav>
+</div>
+<div class="nav-divider"></div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <span class="legend-title">凡例 :</span>
+  <div class="legend-item">
+    <div class="legend-dot ld-learn">学</div>
+    学習項目（インプット）
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot ld-challenge">⚡</div>
+    チャレンジ課題（直前の学習だけで達成できるアウトプット）
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="print-hint">
+    💡 <span>チャレンジ課題は「直前に学んだ1項目の内容のみ」で完結できるよう設計しています。追加知識は不要です。</span>
+  </div>
+
+
+  <!-- ===================== 初級 ===================== -->
+  <div class="level-block">
+    <div class="level-heading lv-初級">
+      <span class="lv-badge">LEVEL 01 / BEGINNER</span>
+      <span class="lv-title">🌱 初級</span>
+      <span class="lv-desc">道具に慣れ、作る楽しさを知る</span>
+    </div>
+    <div class="tool-sections">
+
+      <!-- Canva 初級 -->
+      <div class="tool-section">
+        <div class="tool-header th-canva">
+          <div class="tool-icon ti-canva">C</div>
+          <div class="tool-header-info">
+            <div class="tool-header-name">🎨 Canva</div>
+            <div class="tool-header-theme">デザインの基礎</div>
+          </div>
+        </div>
+        <div class="tool-body">
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">1</div>
+              <div class="learn-text">テンプレートの使い方</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">好きなテンプレートを3つ試して、一番気に入ったものを選んで自分の名前を入れてみよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">2</div>
+              <div class="learn-text">テキスト・フォント変更</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">フォントを5種類試して「タイトル用」と「本文用」で違うフォントを使い分けた名刺カードを作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">3</div>
+              <div class="learn-text">画像・アイコン配置</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">自分の好きなものを表すアイコンを5つ選んで、バランスよく並べた「自己紹介カード」を作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">4</div>
+              <div class="learn-text">ポスター・カード作成</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">「クリエットってどんなところ？」を伝えるA4ポスターを1枚完成させよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">5</div>
+              <div class="learn-text">色の組み合わせと配色</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">同じデザインを「暖色バージョン」と「寒色バージョン」の2パターン作って並べてみよう</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Scratch 初級 -->
+      <div class="tool-section">
+        <div class="tool-header th-scratch">
+          <div class="tool-icon ti-scratch">S</div>
+          <div class="tool-header-info">
+            <div class="tool-header-name">🐱 Scratch</div>
+            <div class="tool-header-theme">プログラミング入門</div>
+          </div>
+        </div>
+        <div class="tool-body">
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">1</div>
+              <div class="learn-text">スプライトと背景の操作</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">好きなスプライトを選んで、3つの違う背景を順番に旅するアニメーションを作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">2</div>
+              <div class="learn-text">イベントと順次処理</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">「スペースキー→右に移動」「Aキー→左に移動」「Sキー→止まる」の3つのキー操作プログラムを作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">3</div>
+              <div class="learn-text">動き・見た目ブロックの基礎</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">スプライトが画面の端にぶつかったら自動で向きを変えて戻ってくるプログラムを作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">4</div>
+              <div class="learn-text">音を鳴らす・会話する</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">クリックするたびにセリフが変わる会話アニメを、3回分（3種類のセリフ）作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">5</div>
+              <div class="learn-text">簡単なアニメーション作成</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">自分だけの主人公キャラクターが登場する10秒のオープニングアニメを作って発表しよう</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- mBot 初級 -->
+      <div class="tool-section">
+        <div class="tool-header th-mbot">
+          <div class="tool-icon ti-mbot">M</div>
+          <div class="tool-header-info">
+            <div class="tool-header-name">🤖 mBot</div>
+            <div class="tool-header-theme">組み立て・基本制御</div>
+          </div>
+        </div>
+        <div class="tool-body">
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-mbot">1</div>
+              <div class="learn-text">ロボットの組み立て体験</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">組み立てたロボットの各パーツの名前と役割を書いた「ロボット図解カード」を手書きで作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-mbot">2</div>
+              <div class="learn-text">LEDランプの色制御</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">赤→黄→緑と順番に1秒ずつ変わる「信号機プログラム」を作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-mbot">3</div>
+              <div class="learn-text">ブザーで音を鳴らす</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">「ドレミ」の3音を使って、好きな曲の最初の3音をブザーで演奏してみよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-mbot">4</div>
+              <div class="learn-text">前後左右の基本移動</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">正方形のコースを1周するプログラムを作ろう（曲がり角がきちんと90度になるよう調整しよう）</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-mbot">5</div>
+              <div class="learn-text">リモコン操作体験</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">リモコン操作で、机の上に置いたペットボトル3本に当たらずにゴールまで走り抜けよう</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /tool-sections -->
+    <div class="transition-box">
+      <span>📌</span>
+      <div>
+        <strong>初級 → 中級への移行目安</strong>
+        Canva で自分オリジナルのポスターを1枚仕上げられる／Scratchでスプライトをキーで動かせる／mBotを自力で組み立ててLEDとブザーをプログラムできる
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===================== 中級 ===================== -->
+  <div class="level-block">
+    <div class="level-heading lv-中級">
+      <span class="lv-badge">LEVEL 02 / INTERMEDIATE</span>
+      <span class="lv-title">⚙️ 中級</span>
+      <span class="lv-desc">ロジックと表現を組み合わせる</span>
+    </div>
+    <div class="tool-sections">
+
+      <!-- Canva 中級 -->
+      <div class="tool-section">
+        <div class="tool-header th-canva">
+          <div class="tool-icon ti-canva">C</div>
+          <div class="tool-header-info">
+            <div class="tool-header-name">🎨 Canva</div>
+            <div class="tool-header-theme">プレゼン × 共同制作</div>
+          </div>
+        </div>
+        <div class="tool-body">
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">1</div>
+              <div class="learn-text">テーマ統一スライド制作</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">「自分の好きなこと発表」3枚スライドを、カラー・フォントを統一して作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">2</div>
+              <div class="learn-text">グループ共同編集</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">2人で役割（テキスト担当・デザイン担当）を決めて、1枚のスライドを10分で仕上げよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">3</div>
+              <div class="learn-text">写真・図形の応用レイアウト</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">写真＋テキスト＋図形を組み合わせた「おすすめスポット紹介カード」を1枚作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">4</div>
+              <div class="learn-text">学校新聞・レポート形式</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">今日の授業でやったことを「ミニ新聞1ページ」にまとめよう（見出し・本文・写真の3点セットで）</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">5</div>
+              <div class="learn-text">発表用ノート・司会原稿</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">スライドの各ページに発表ノートを書いて、1分間で話せるようにリハーサルしてみよう</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Scratch 中級 -->
+      <div class="tool-section">
+        <div class="tool-header th-scratch">
+          <div class="tool-icon ti-scratch">S</div>
+          <div class="tool-header-info">
+            <div class="tool-header-name">🐱 Scratch</div>
+            <div class="tool-header-theme">変数 × 条件分岐</div>
+          </div>
+        </div>
+        <div class="tool-body">
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">1</div>
+              <div class="learn-text">繰り返し（ループ）処理</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">「ずっと」ブロックを使って、スプライトが画面を永遠にぐるぐる回り続けるプログラムを作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">2</div>
+              <div class="learn-text">変数でスコア・HP管理</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">コインに触れると「スコア+1」、敵に触れると「HP−1」が動作するゲームの骨格を作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">3</div>
+              <div class="learn-text">条件分岐で動きを変える</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">スコアが「10点以上」になったら背景が変わる演出を、if ブロックだけ使って追加しよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">4</div>
+              <div class="learn-text">簡易アクションゲーム制作</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">作ったゲームに「60秒タイムアタックモード」を追加しよう（タイマーが0になったら自動でゲーム終了）</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">5</div>
+              <div class="learn-text">クイズアプリ・タイピング</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">3問全問正解したら「クリア！」と表示されるクイズアプリを完成させよう</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- mBot 中級 -->
+      <div class="tool-section">
+        <div class="tool-header th-mbot">
+          <div class="tool-icon ti-mbot">M</div>
+          <div class="tool-header-info">
+            <div class="tool-header-name">🤖 mBot</div>
+            <div class="tool-header-theme">センサー × 自動走行</div>
+          </div>
+        </div>
+        <div class="tool-body">
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-mbot">1</div>
+              <div class="learn-text">超音波センサーで障害物回避</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">壁から20cm以内に近づいたら自動で止まる「自動ブレーキ」プログラムを作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-mbot">2</div>
+              <div class="learn-text">ライントレース走行</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">Sカーブのコースを最後までゴールできるよう、スピードと感度の数値を自分で調整しよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-mbot">3</div>
+              <div class="learn-text">条件分岐でコース選択</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">T字路でラインセンサーを使って「左か右か」を自動で判断して曲がるプログラムを作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-mbot">4</div>
+              <div class="learn-text">光センサーの活用</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">周囲が暗くなったら自動でLEDが点灯する「防犯ライトプログラム」を作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-mbot">5</div>
+              <div class="learn-text">チャレンジコース制作</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">自分でオリジナルコースを設計して、クラスメートとタイムアタック大会を開こう！</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /tool-sections -->
+    <div class="transition-box">
+      <span>📌</span>
+      <div>
+        <strong>中級 → 上級への移行目安</strong>
+        Canva でグループ共同スライドを仕上げて発表できる／Scratch で変数でスコアが増えるゲームを1本完成できる／mBot でライントレース走行を成功させられる（mBot は中級で修了）
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===================== 上級 ===================== -->
+  <div class="level-block">
+    <div class="level-heading lv-上級">
+      <span class="lv-badge">LEVEL 03 / ADVANCED</span>
+      <span class="lv-title">🚀 上級</span>
+      <span class="lv-desc">ゼロから作品を設計・完成させる</span>
+    </div>
+    <div class="tool-sections">
+
+      <!-- Canva 上級 -->
+      <div class="tool-section">
+        <div class="tool-header th-canva">
+          <div class="tool-icon ti-canva">C</div>
+          <div class="tool-header-info">
+            <div class="tool-header-name">🎨 Canva</div>
+            <div class="tool-header-theme">動画 × アニメーション</div>
+          </div>
+        </div>
+        <div class="tool-body">
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">1</div>
+              <div class="learn-text">アニメーション付きプレゼン</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">全ページに違うアニメーションをつけて、30秒で話しきれるプレゼンを仕上げよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">2</div>
+              <div class="learn-text">SNS投稿・サムネイル制作</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">自分が作ったScratch作品の「YouTube風サムネイル画像」を1枚作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">3</div>
+              <div class="learn-text">インフォグラフィック制作</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">「プログラミングを学ぶ3つの理由」を図と矢印で説明する1枚インフォグラフィックを作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">4</div>
+              <div class="learn-text">チラシ・イベント告知素材</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">クリエットの「体験会チラシ」を実際に使えるクオリティで1枚完成させよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">5</div>
+              <div class="learn-text">共同編集でチーム制作</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">チームで役割分担して「自分たちの学校紹介スライド5枚」を完成させよう</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Scratch 上級 -->
+      <div class="tool-section">
+        <div class="tool-header th-scratch">
+          <div class="tool-icon ti-scratch">S</div>
+          <div class="tool-header-info">
+            <div class="tool-header-name">🐱 Scratch</div>
+            <div class="tool-header-theme">ゲーム × インタラクション</div>
+          </div>
+        </div>
+        <div class="tool-body">
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">1</div>
+              <div class="learn-text">リスト・配列の活用</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">リストに5つのキャラクター名を入れて、クリックするたびにランダムで「今日のヒーロー」を発表するプログラムを作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">2</div>
+              <div class="learn-text">複数スプライトの連携制御</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">「プレイヤー」「敵」「弾」の3スプライトが連動して動くシューティングゲームの骨格を作ろう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">3</div>
+              <div class="learn-text">タイマー・スコア表示</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">60秒のタイムリミットをゲームに追加して、残り10秒になったら数字が赤に変わるようにしよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">4</div>
+              <div class="learn-text">シューティング・プラットフォームゲーム</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">「スタート画面」と「ゲームオーバー画面」を追加して、ゲームとして完成させよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">5</div>
+              <div class="learn-text">外部APIを使った音楽ゲーム</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">作ったゲームを友達3人に遊んでもらって感想を聞き、改善したい点を1つ見つけて直してみよう</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- mBot 上級 → なし -->
+      <div class="tool-section empty">
+        <div class="empty-msg">
+          <span class="big">🤖</span>
+          <strong style="color:#AAA;font-size:14px;">mBot は中級で修了</strong><br><br>
+          センサー思考・条件分岐の経験を<br>Scratch 上位レベルへ活かします
+        </div>
+      </div>
+
+    </div><!-- /tool-sections -->
+    <div class="transition-box">
+      <span>📌</span>
+      <div>
+        <strong>上級 → 超上級への移行目安</strong>
+        Canva で動画付きプレゼンを自力制作できる／Scratch で複数ステージを持つゲームを完成・発表できる／作品発表会での発表を経験している
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===================== 超上級 ===================== -->
+  <div class="level-block">
+    <div class="level-heading lv-超上級">
+      <span class="lv-badge">LEVEL 04 / EXPERT</span>
+      <span class="lv-title">⭐ 超上級</span>
+      <span class="lv-desc">AI を使いこなし、社会へ発信するクリエイターへ</span>
+    </div>
+    <div class="tool-sections">
+
+      <!-- Canva 超上級 -->
+      <div class="tool-section">
+        <div class="tool-header th-canva">
+          <div class="tool-icon ti-canva">C</div>
+          <div class="tool-header-info">
+            <div class="tool-header-name">🎨 Canva</div>
+            <div class="tool-header-theme">AI × プロデザイン</div>
+          </div>
+        </div>
+        <div class="tool-body">
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">1</div>
+              <div class="learn-text">AI画像生成・Magic Write活用</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">AI に3回違うプロンプトを入れて、一番気に入った画像を選んで作品の背景に使おう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">2</div>
+              <div class="learn-text">ブランドキット設計と統一感</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">自分の「活動ブランド」のカラー3色・フォント2種・ロゴマークを決めてブランドキットに設定しよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">3</div>
+              <div class="learn-text">動画・ショートムービー制作</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">自分が作ったScratch作品を30秒で紹介する「プロモーション動画」を作って発表しよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">4</div>
+              <div class="learn-text">ポートフォリオサイト制作</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">クリエットでの1年間の作品をまとめた「自分のポートフォリオ1冊」を完成させよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-canva">5</div>
+              <div class="learn-text">発表会・展示用フル制作</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">発表会のスライド・チラシ・名札をすべて自分のブランドで統一して「一式セット」で完成させよう</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Scratch 超上級 -->
+      <div class="tool-section">
+        <div class="tool-header th-scratch">
+          <div class="tool-icon ti-scratch">S</div>
+          <div class="tool-header-info">
+            <div class="tool-header-name">🐱 Scratch</div>
+            <div class="tool-header-theme">本格ゲーム開発</div>
+          </div>
+        </div>
+        <div class="tool-body">
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">1</div>
+              <div class="learn-text">複数ステージ・シーン遷移</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">3ステージ目をクリアしたらエンディングムービーが自動で流れるようにしよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">2</div>
+              <div class="learn-text">カスタムブロックで関数設計</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">「敵を出現させる」カスタムブロックを1つ作って、そのブロックだけでランダムに3種類の敵を出せるようにしよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">3</div>
+              <div class="learn-text">スコア管理・セーブ機能</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">ハイスコアを記録して、更新したときだけ「NEW RECORD！」と画面に表示されるようにしよう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">4</div>
+              <div class="learn-text">音楽・エフェクト演出</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">ボス戦用の BGM と効果音を Scratch の音楽ブロックで自作して、ゲームに組み込もう</span>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="learn-row">
+              <div class="learn-num ln-scratch">5</div>
+              <div class="learn-text">作品発表・フィードバック改善</div>
+            </div>
+            <div class="challenge-row">
+              <span class="challenge-label">⚡ チャレンジ</span>
+              <span class="challenge-text">完成作品を友達3人に遊んでもらって意見を集め、改善点を1つ実装して再発表しよう</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- mBot 超上級 → なし -->
+      <div class="tool-section empty">
+        <div class="empty-msg">
+          <span class="big">🤖</span>
+          <strong style="color:#AAA;font-size:14px;">mBot は中級で修了</strong><br><br>
+          超上級では Canva・Scratch の<br>表現力・作品性に集中します
+        </div>
+      </div>
+
+    </div><!-- /tool-sections -->
+    <div class="transition-box">
+      <span>🎓</span>
+      <div>
+        <strong>超上級修了のゴール</strong>
+        自分のブランドで統一された作品を「発表会・展示」で発信できる。Scratch で完成度の高いゲームをゼロから設計・改善できる。AI を目的に合わせて使いこなせる。
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Creatte（クリエット）</strong>
+  <p>チャレンジ課題つきカリキュラム ｜ 2026年3月 策定 ｜ 全30チャレンジ（Canva×20 / Scratch×20 / mBot×10）｜ 作成支援：Claude（Cowork mode）</p>
+</div>
+
+</body>
+</html>

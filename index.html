@@ -92,6 +92,46 @@
     font-weight: 600;
   }
 
+  /* ========== HEADER NAV ========== */
+  .header-nav {
+    display: flex;
+    gap: 4px;
+    margin-top: 24px;
+    position: relative;
+    z-index: 2;
+  }
+  .header-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    border-radius: 8px 8px 0 0;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-bottom: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .header-nav a:hover {
+    background: rgba(255,255,255,0.22);
+    color: white;
+  }
+  .header-nav a.active {
+    background: rgba(255,255,255,0.28);
+    color: white;
+    border-color: rgba(255,255,255,0.35);
+  }
+  .nav-divider {
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+    margin: 0 -40px;
+    position: relative;
+    z-index: 2;
+  }
+
   /* ========== CONTAINER ========== */
   .container {
     max-width: 1100px;
@@ -725,7 +765,12 @@
     <span class="meta-chip">🛠 Canva / Scratch / mBot</span>
     <span class="meta-chip">📊 4レベル構成</span>
   </div>
+  <nav class="header-nav">
+    <a href="index.html" class="active">📋 カリキュラム構成</a>
+    <a href="challenge.html">⚡ チャレンジ課題</a>
+  </nav>
 </div>
+<div class="nav-divider"></div>
 
 <div class="container">
 
