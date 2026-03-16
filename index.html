@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>クリエット カリキュラム構成案 2026</title>
+<style>
+  :root {
+    --orange: #FF6B1A;
+    --orange-light: #FFF0E8;
+    --orange-mid: #FFB380;
+    --blue: #1A7BFF;
+    --blue-light: #E8F2FF;
+    --green: #1AB86B;
+    --green-light: #E8FFF3;
+    --purple: #8B1AFF;
+    --purple-light: #F3E8FF;
+    --yellow: #FFB800;
+    --yellow-light: #FFF9E8;
+    --gray: #F5F5F5;
+    --dark: #1A1A2E;
+    --text: #333;
+    --shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background: #FAFAFA;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ========== HEADER ========== */
+  .header {
+    background: linear-gradient(135deg, var(--orange) 0%, #FF9A3C 50%, #FFB800 100%);
+    color: white;
+    padding: 48px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 40%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .header-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .header p {
+    font-size: 15px;
+    opacity: 0.9;
+    margin-top: 8px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .meta-chip {
+    background: rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ========== CONTAINER ========== */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  /* ========== SECTION TITLES ========== */
+  .section-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .section-sub {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 24px;
+    padding-left: 42px;
+  }
+  .section-divider {
+    height: 3px;
+    background: linear-gradient(to right, var(--orange), transparent);
+    margin-bottom: 32px;
+    border-radius: 2px;
+  }
+
+  /* ========== LEVEL OVERVIEW TABLE ========== */
+  .level-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr 1fr;
+    gap: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+  }
+  .grid-header {
+    padding: 16px 12px;
+    font-weight: 800;
+    font-size: 14px;
+    text-align: center;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+  }
+  .grid-header.tool-canva { background: #7B2FBE; color: white; }
+  .grid-header.tool-scratch { background: #FF6B1A; color: white; }
+  .grid-header.tool-mbot { background: #1A7BFF; color: white; }
+  .grid-header.level-col {
+    background: var(--dark);
+    color: white;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
+  .grid-level {
+    padding: 20px 16px;
+    font-weight: 800;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+  .level-超上級 { background: #2D1B69; color: white; }
+  .level-上級 { background: #4A2080; color: white; }
+  .level-中級 { background: #6B2FA0; color: white; }
+  .level-初級 { background: #8B3FC0; color: white; }
+
+  .level-badge {
+    font-size: 10px;
+    font-weight: 600;
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+  }
+
+  .grid-cell {
+    padding: 18px 14px;
+    border-bottom: 1px solid #EBEBEB;
+    border-right: 1px solid #EBEBEB;
+    font-size: 13px;
+    background: white;
+  }
+  .grid-cell.empty {
+    background: #F8F8F8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #CCC;
+    font-size: 20px;
+  }
+  .grid-cell ul {
+    list-style: none;
+    padding: 0;
+  }
+  .grid-cell ul li {
+    padding: 3px 0;
+    padding-left: 16px;
+    position: relative;
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  .grid-cell ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-size: 10px;
+    top: 4px;
+  }
+  .cell-title {
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #F0F0F0;
+  }
+  .cell-canva .cell-title { color: #7B2FBE; }
+  .cell-scratch .cell-title { color: #FF6B1A; }
+  .cell-mbot .cell-title { color: #1A7BFF; }
+
+  .cell-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  .tag-超上級 { background: #EDE0FF; color: #5B1F9E; }
+  .tag-上級 { background: #FFE8D9; color: #CC4400; }
+  .tag-中級 { background: #D9EDFF; color: #0055CC; }
+  .tag-初級 { background: #D9FFE8; color: #007744; }
+
+  /* ========== DETAILED CARDS ========== */
+  .detail-section {
+    margin-bottom: 48px;
+  }
+
+  .level-header-card {
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .level-header-card.初級 { background: linear-gradient(135deg, #D9FFE8, #AAFFCC); border-left: 5px solid var(--green); }
+  .level-header-card.中級 { background: linear-gradient(135deg, #D9EDFF, #AACCFF); border-left: 5px solid var(--blue); }
+  .level-header-card.上級 { background: linear-gradient(135deg, #FFE8D9, #FFCCAA); border-left: 5px solid var(--orange); }
+  .level-header-card.超上級 { background: linear-gradient(135deg, #EDE0FF, #D4AAFF); border-left: 5px solid var(--purple); }
+
+  .level-number {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.3;
+  }
+  .level-header-info h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .level-header-info p {
+    font-size: 13px;
+    opacity: 0.8;
+  }
+  .level-stats {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .stat-chip {
+    background: rgba(255,255,255,0.6);
+    border-radius: 8px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .tool-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .tool-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border-top: 4px solid transparent;
+    transition: transform 0.2s;
+  }
+  .tool-card:hover { transform: translateY(-2px); }
+  .tool-card.canva { border-top-color: #7B2FBE; }
+  .tool-card.scratch { border-top-color: #FF6B1A; }
+  .tool-card.mbot { border-top-color: #1A7BFF; }
+
+  .tool-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .tool-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+  }
+  .tool-icon.canva { background: #7B2FBE; }
+  .tool-icon.scratch { background: #FF6B1A; }
+  .tool-icon.mbot { background: #1A7BFF; }
+
+  .tool-card-title {
+    font-size: 15px;
+    font-weight: 800;
+  }
+  .tool-card-subtitle {
+    font-size: 12px;
+    color: #888;
+  }
+
+  .skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .skill-list li {
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+    font-size: 13px;
+    border-bottom: 1px dashed #F0F0F0;
+    line-height: 1.4;
+  }
+  .skill-list li:last-child { border-bottom: none; }
+  .skill-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+    font-weight: 700;
+    top: 6px;
+  }
+  .tool-card.canva .skill-list li::before { color: #7B2FBE; }
+  .tool-card.scratch .skill-list li::before { color: #FF6B1A; }
+  .tool-card.mbot .skill-list li::before { color: #1A7BFF; }
+
+  .goal-box {
+    background: #F8F8F8;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #555;
+  }
+  .goal-box strong {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 3px;
+    color: #999;
+  }
+
+  /* ========== ROADMAP ========== */
+  .roadmap-container {
+    background: white;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+    overflow-x: auto;
+  }
+
+  .roadmap {
+    min-width: 700px;
+    position: relative;
+  }
+
+  .roadmap-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 32px;
+    color: var(--dark);
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 44px;
+    left: 60px;
+    right: 60px;
+    height: 4px;
+    background: linear-gradient(to right, var(--green), var(--blue), var(--orange), var(--purple));
+    border-radius: 2px;
+    z-index: 0;
+  }
+
+  .timeline-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-dot {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+    border: 4px solid white;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    margin-bottom: 12px;
+  }
+  .dot-初級 { background: var(--green); }
+  .dot-中級 { background: var(--blue); }
+  .dot-上級 { background: var(--orange); }
+  .dot-超上級 { background: var(--purple); }
+
+  .timeline-label {
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .timeline-period {
+    font-size: 11px;
+    color: #888;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .timeline-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 90%;
+  }
+  .tool-pill {
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .pill-canva { background: #EDE0FF; color: #5B1F9E; }
+  .pill-scratch { background: #FFE8D9; color: #CC4400; }
+  .pill-mbot { background: #D9EDFF; color: #0055CC; }
+
+  .timeline-milestone {
+    margin-top: 12px;
+    background: #F8F8F8;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 11px;
+    color: #555;
+    text-align: center;
+    width: 90%;
+    line-height: 1.5;
+  }
+
+  /* ========== PROGRESSION LOGIC ========== */
+  .progression-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .progression-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  .progression-card h4 {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #F0F0F0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .prog-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .prog-canva { background: #7B2FBE; }
+  .prog-scratch { background: #FF6B1A; }
+  .prog-mbot { background: #1A7BFF; }
+
+  .prog-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .prog-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid #F5F5F5;
+    font-size: 12px;
+  }
+  .prog-step:last-child { border-bottom: none; }
+  .prog-step-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-初級 { background: #D9FFE8; color: #007744; }
+  .badge-中級 { background: #D9EDFF; color: #0055CC; }
+  .badge-上級 { background: #FFE8D9; color: #CC4400; }
+  .badge-超上級 { background: #EDE0FF; color: #5B1F9E; }
+  .prog-step-text { color: #555; line-height: 1.4; }
+
+  .prog-arrow {
+    text-align: center;
+    color: #DDD;
+    font-size: 18px;
+    line-height: 1;
+    padding: 2px 0;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 30px;
+  }
+
+  /* ========== RATIONALE ========== */
+  .rationale-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .rationale-card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  .rationale-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .rationale-card p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.7;
+  }
+  .rationale-num {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    background: var(--orange);
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ========== STUDENT TYPES ========== */
+  .student-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .student-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    text-align: center;
+  }
+  .student-avatar {
+    font-size: 40px;
+    margin-bottom: 12px;
+  }
+  .student-card h4 {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .student-card p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .student-path {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+
+  /* ========== ASSESSMENT ========== */
+  .assessment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  .assessment-table th {
+    background: var(--dark);
+    color: white;
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+  }
+  .assessment-table td {
+    padding: 12px 16px;
+    font-size: 12.5px;
+    border-bottom: 1px solid #F0F0F0;
+    vertical-align: top;
+  }
+  .assessment-table tr:last-child td { border-bottom: none; }
+  .assessment-table tr:nth-child(even) td { background: #FAFAFA; }
+  .check-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    margin: 2px;
+  }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    background: var(--dark);
+    color: white;
+    padding: 32px 40px;
+    margin-top: 20px;
+  }
+  .footer p {
+    font-size: 13px;
+    opacity: 0.7;
+  }
+  .footer strong {
+    color: var(--orange);
+    font-size: 18px;
+  }
+
+  /* ========== HIGHLIGHT BOXES ========== */
+  .highlight-box {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .highlight-box.orange { background: var(--orange-light); border-left: 4px solid var(--orange); }
+  .highlight-box.blue { background: var(--blue-light); border-left: 4px solid var(--blue); }
+  .highlight-box.green { background: var(--green-light); border-left: 4px solid var(--green); }
+
+  /* Source section */
+  .sources {
+    background: #F5F5F5;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 12px;
+    color: #666;
+  }
+  .sources h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  .sources a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .sources a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-tag">🎓 CREATTE CURRICULUM 2026</div>
+  <h1>クリエット カリキュラム構成案</h1>
+  <p>小学生向け プログラミング × デザイン × ロボット 4段階レベル設計</p>
+  <div class="header-meta">
+    <span class="meta-chip">📅 2026年3月 策定</span>
+    <span class="meta-chip">👦 対象：小学1〜6年生</span>
+    <span class="meta-chip">🛠 Canva / Scratch / mBot</span>
+    <span class="meta-chip">📊 4レベル構成</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- OVERVIEW TABLE -->
+  <div class="section-title">
+    <div class="icon" style="background:#F0F0F0">📋</div>
+    全体構成マトリックス
+  </div>
+  <p class="section-sub">各レベルで習得するツールと学習テーマの一覧</p>
+  <div class="section-divider"></div>
+
+  <div class="level-grid">
+    <!-- Header row -->
+    <div class="grid-header level-col">レベル</div>
+    <div class="grid-header tool-canva">🎨 Canva</div>
+    <div class="grid-header tool-scratch">🐱 Scratch</div>
+    <div class="grid-header tool-mbot">🤖 mBot</div>
+
+    <!-- 超上級 -->
+    <div class="grid-level level-超上級">
+      <span class="level-badge">EXPERT</span>
+      超上級
+    </div>
+    <div class="grid-cell cell-canva">
+      <div class="cell-tag tag-超上級">Canva 超上級</div>
+      <div class="cell-title">AI × プロデザイン</div>
+      <ul>
+        <li>AI画像生成・Magic Write活用</li>
+        <li>ブランドキット設計と統一感</li>
+        <li>動画・ショートムービー制作</li>
+        <li>ポートフォリオサイト制作</li>
+        <li>発表会・展示用フル制作</li>
+      </ul>
+    </div>
+    <div class="grid-cell cell-scratch">
+      <div class="cell-tag tag-超上級">Scratch 超上級</div>
+      <div class="cell-title">本格ゲーム開発</div>
+      <ul>
+        <li>複数ステージ・シーン遷移</li>
+        <li>カスタムブロックで関数設計</li>
+        <li>スコア管理・セーブ機能</li>
+        <li>音楽・エフェクト演出</li>
+        <li>作品発表・フィードバック改善</li>
+      </ul>
+    </div>
+    <div class="grid-cell empty">—</div>
+
+    <!-- 上級 -->
+    <div class="grid-level level-上級">
+      <span class="level-badge">ADVANCED</span>
+      上級
+    </div>
+    <div class="grid-cell cell-canva">
+      <div class="cell-tag tag-上級">Canva 上級</div>
+      <div class="cell-title">動画 × アニメーション</div>
+      <ul>
+        <li>アニメーション付きプレゼン</li>
+        <li>SNS投稿・サムネイル制作</li>
+        <li>インフォグラフィック制作</li>
+        <li>チラシ・イベント告知素材</li>
+        <li>共同編集でチーム制作</li>
+      </ul>
+    </div>
+    <div class="grid-cell cell-scratch">
+      <div class="cell-tag tag-上級">Scratch 上級</div>
+      <div class="cell-title">ゲーム × インタラクション</div>
+      <ul>
+        <li>リスト・配列の活用</li>
+        <li>複数スプライトの連携制御</li>
+        <li>タイマー・スコア表示</li>
+        <li>シューティング・プラットフォームゲーム</li>
+        <li>外部APIを使った音楽ゲーム</li>
+      </ul>
+    </div>
+    <div class="grid-cell empty">—</div>
+
+    <!-- 中級 -->
+    <div class="grid-level level-中級">
+      <span class="level-badge">INTERMEDIATE</span>
+      中級
+    </div>
+    <div class="grid-cell cell-canva">
+      <div class="cell-tag tag-中級">Canva 中級</div>
+      <div class="cell-title">プレゼン × 共同制作</div>
+      <ul>
+        <li>テーマ統一スライド制作</li>
+        <li>グループ共同編集</li>
+        <li>写真・図形の応用レイアウト</li>
+        <li>学校新聞・レポート形式</li>
+        <li>発表用ノート・司会原稿</li>
+      </ul>
+    </div>
+    <div class="grid-cell cell-scratch">
+      <div class="cell-tag tag-中級">Scratch 中級</div>
+      <div class="cell-title">変数 × 条件分岐</div>
+      <ul>
+        <li>繰り返し（ループ）処理</li>
+        <li>変数でスコア・HP管理</li>
+        <li>条件分岐で動きを変える</li>
+        <li>簡易アクションゲーム制作</li>
+        <li>クイズアプリ・タイピング</li>
+      </ul>
+    </div>
+    <div class="grid-cell cell-mbot">
+      <div class="cell-tag tag-中級">mBot 中級</div>
+      <div class="cell-title">センサー × 自動走行</div>
+      <ul>
+        <li>超音波センサーで障害物回避</li>
+        <li>ライントレース走行</li>
+        <li>条件分岐でコース選択</li>
+        <li>光センサーの活用</li>
+        <li>チャレンジコース制作</li>
+      </ul>
+    </div>
+
+    <!-- 初級 -->
+    <div class="grid-level level-初級">
+      <span class="level-badge">BEGINNER</span>
+      初級
+    </div>
+    <div class="grid-cell cell-canva">
+      <div class="cell-tag tag-初級">Canva 初級</div>
+      <div class="cell-title">デザインの基礎</div>
+      <ul>
+        <li>テンプレートの使い方</li>
+        <li>テキスト・フォント変更</li>
+        <li>画像・アイコン配置</li>
+        <li>ポスター・カード作成</li>
+        <li>色の組み合わせと配色</li>
+      </ul>
+    </div>
+    <div class="grid-cell cell-scratch">
+      <div class="cell-tag tag-初級">Scratch 初級</div>
+      <div class="cell-title">プログラミング入門</div>
+      <ul>
+        <li>スプライトと背景の操作</li>
+        <li>イベントと順次処理</li>
+        <li>動き・見た目ブロックの基礎</li>
+        <li>音を鳴らす・会話する</li>
+        <li>簡単なアニメーション作成</li>
+      </ul>
+    </div>
+    <div class="grid-cell cell-mbot">
+      <div class="cell-tag tag-初級">mBot 初級</div>
+      <div class="cell-title">組み立て × 基本制御</div>
+      <ul>
+        <li>ロボットの組み立て体験</li>
+        <li>LEDランプの色制御</li>
+        <li>ブザーで音を鳴らす</li>
+        <li>前後左右の基本移動</li>
+        <li>リモコン操作体験</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== ROADMAP ===== -->
+  <div class="section-title">
+    <div class="icon" style="background:#FFF0E8">🗺</div>
+    生徒ロードマップ
+  </div>
+  <p class="section-sub">入会から超上級まで、スキルの積み上げイメージ</p>
+  <div class="section-divider"></div>
+
+  <div class="roadmap-container">
+    <div class="roadmap">
+      <div class="roadmap-title">📈 クリエット スキル成長ロードマップ</div>
+
+      <div class="timeline">
+        <!-- 初級 -->
+        <div class="timeline-step">
+          <div class="timeline-dot dot-初級">①</div>
+          <div class="timeline-label">初級</div>
+          <div class="timeline-period">〜6ヶ月目安</div>
+          <div class="timeline-tools">
+            <div class="tool-pill pill-canva">🎨 Canva 基礎</div>
+            <div class="tool-pill pill-scratch">🐱 Scratch 入門</div>
+            <div class="tool-pill pill-mbot">🤖 mBot 組み立て</div>
+          </div>
+          <div class="timeline-milestone">
+            💡 デジタル道具に<br>慣れ親しむ期間<br><strong>「作る楽しさを知る」</strong>
+          </div>
+        </div>
+
+        <!-- 矢印 -->
+        <div style="display:flex;align-items:center;padding-top:44px;font-size:22px;color:#DDD;flex-shrink:0;">→</div>
+
+        <!-- 中級 -->
+        <div class="timeline-step">
+          <div class="timeline-dot dot-中級">②</div>
+          <div class="timeline-label">中級</div>
+          <div class="timeline-period">〜1年目安</div>
+          <div class="timeline-tools">
+            <div class="tool-pill pill-canva">🎨 Canva 応用</div>
+            <div class="tool-pill pill-scratch">🐱 Scratch 変数・条件</div>
+            <div class="tool-pill pill-mbot">🤖 mBot センサー</div>
+          </div>
+          <div class="timeline-milestone">
+            ⚙️ ロジックと表現を<br>組み合わせる段階<br><strong>「考えながら作る」</strong>
+          </div>
+        </div>
+
+        <!-- 矢印 -->
+        <div style="display:flex;align-items:center;padding-top:44px;font-size:22px;color:#DDD;flex-shrink:0;">→</div>
+
+        <!-- 上級 -->
+        <div class="timeline-step">
+          <div class="timeline-dot dot-上級">③</div>
+          <div class="timeline-label">上級</div>
+          <div class="timeline-period">〜2年目安</div>
+          <div class="timeline-tools">
+            <div class="tool-pill pill-canva">🎨 Canva 動画</div>
+            <div class="tool-pill pill-scratch">🐱 Scratch ゲーム</div>
+          </div>
+          <div class="timeline-milestone">
+            🚀 ゼロから作品を<br>設計・完成させる<br><strong>「自分の作品を持つ」</strong>
+          </div>
+        </div>
+
+        <!-- 矢印 -->
+        <div style="display:flex;align-items:center;padding-top:44px;font-size:22px;color:#DDD;flex-shrink:0;">→</div>
+
+        <!-- 超上級 -->
+        <div class="timeline-step">
+          <div class="timeline-dot dot-超上級">④</div>
+          <div class="timeline-label">超上級</div>
+          <div class="timeline-period">〜3年目安</div>
+          <div class="timeline-tools">
+            <div class="tool-pill pill-canva">🎨 Canva AI活用</div>
+            <div class="tool-pill pill-scratch">🐱 Scratch 本格開発</div>
+          </div>
+          <div class="timeline-milestone">
+            ⭐ 自分だけの作品で<br>発表・社会と繋がる<br><strong>「クリエイターへ」</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Branching path note -->
+      <div style="margin-top:32px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div class="highlight-box orange">
+          <strong>🎯 mBotは初級〜中級で「ロボット思考」を完成</strong><br>
+          mBotは初級・中級の2段階に集中することで、センサー・条件分岐・物理的フィードバックという
+          「プログラムが現実に影響を与える体験」を深く積みます。上級以降はScratch・Canvaの
+          表現力に注力するため、mBotは中級で卒業となります。
+        </div>
+        <div class="highlight-box blue">
+          <strong>📌 入会タイミングで柔軟にスタートレベルを調整</strong><br>
+          学年・経験値によって入会時のレベルは柔軟に設定します。
+          小1〜2年：初級スタート推奨 / 小3〜4年：初級〜中級 / 小5〜6年：中級スタートも可。
+          体験授業で適性を見極めます。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOOL PROGRESSION ===== -->
+  <div class="section-title">
+    <div class="icon" style="background:#FFF0E8">📈</div>
+    ツール別 学習フロー
+  </div>
+  <p class="section-sub">各ツールでの具体的なスキル積み上げの流れ</p>
+  <div class="section-divider"></div>
+
+  <div class="progression-grid">
+    <!-- Canva -->
+    <div class="progression-card">
+      <h4><span class="prog-dot prog-canva"></span> 🎨 Canva 学習フロー</h4>
+      <div class="prog-flow">
+        <div class="prog-step">
+          <span class="prog-step-badge badge-初級">初級</span>
+          <span class="prog-step-text">テンプレ活用・カード作成・フォント基礎</span>
+        </div>
+        <div class="prog-arrow">↓</div>
+        <div class="prog-step">
+          <span class="prog-step-badge badge-中級">中級</span>
+          <span class="prog-step-text">テーマ統一・共同編集・新聞・プレゼン</span>
+        </div>
+        <div class="prog-arrow">↓</div>
+        <div class="prog-step">
+          <span class="prog-step-badge badge-上級">上級</span>
+          <span class="prog-step-text">アニメーション・動画・SNS素材・チラシ</span>
+        </div>
+        <div class="prog-arrow">↓</div>
+        <div class="prog-step">
+          <span class="prog-step-badge badge-超上級">超上級</span>
+          <span class="prog-step-text">AI活用・ブランドキット・発表会ポートフォリオ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scratch -->
+    <div class="progression-card">
+      <h4><span class="prog-dot prog-scratch"></span> 🐱 Scratch 学習フロー</h4>
+      <div class="prog-flow">
+        <div class="prog-step">
+          <span class="prog-step-badge badge-初級">初級</span>
+          <span class="prog-step-text">スプライト操作・イベント・順次処理・アニメ</span>
+        </div>
+        <div class="prog-arrow">↓</div>
+        <div class="prog-step">
+          <span class="prog-step-badge badge-中級">中級</span>
+          <span class="prog-step-text">ループ・条件分岐・変数・アクションゲーム</span>
+        </div>
+        <div class="prog-arrow">↓</div>
+        <div class="prog-step">
+          <span class="prog-step-badge badge-上級">上級</span>
+          <span class="prog-step-text">リスト・複数スプライト連携・シューティング</span>
+        </div>
+        <div class="prog-arrow">↓</div>
+        <div class="prog-step">
+          <span class="prog-step-badge badge-超上級">超上級</span>
+          <span class="prog-step-text">カスタムブロック・マルチシーン・作品発表</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- mBot -->
+    <div class="progression-card">
+      <h4><span class="prog-dot prog-mbot"></span> 🤖 mBot 学習フロー</h4>
+      <div class="prog-flow">
+        <div class="prog-step">
+          <span class="prog-step-badge badge-初級">初級</span>
+          <span class="prog-step-text">組み立て・LED/ブザー制御・手動操作体験</span>
+        </div>
+        <div class="prog-arrow">↓</div>
+        <div class="prog-step">
+          <span class="prog-step-badge badge-中級">中級</span>
+          <span class="prog-step-text">超音波センサー・ライントレース・条件分岐</span>
+        </div>
+        <div class="prog-arrow">↓</div>
+        <div class="prog-step" style="opacity:0.4; font-style:italic;">
+          <span class="prog-step-badge" style="background:#EEE;color:#999">上級以降</span>
+          <span class="prog-step-text">Scratch・Canvaにフォーカス移行</span>
+        </div>
+      </div>
+      <div style="margin-top:12px; background:#F0F7FF; border-radius:8px; padding:10px; font-size:11px; color:#555;">
+        💡 mBotで培った「センサー思考・物理フィードバック」の経験は、
+        Scratchのゲーム設計（条件分岐・変数）に直接活かされます。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== RATIONALE ===== -->
+  <div class="section-title">
+    <div class="icon" style="background:#FFF0E8">💡</div>
+    構成の根拠・設計思想
+  </div>
+  <p class="section-sub">なぜこの構成にしたか — 教育的・発達的観点からの理由</p>
+  <div class="section-divider"></div>
+
+  <div class="rationale-grid">
+    <div class="rationale-card">
+      <h4><span class="rationale-num">1</span> 3ツールが補い合う設計</h4>
+      <p>
+        <strong>Canva</strong>は「伝える・表現する」力を育て、<strong>Scratch</strong>は「論理的に考える・動かす」力を育て、
+        <strong>mBot</strong>は「物理世界に働きかける」体験を与えます。
+        3つを組み合わせることで、創造性・論理性・試行錯誤力というSTEAM教育の核を
+        バランスよく養えます。「作ったゲームをCanvaでポスター化する」「mBotのコースをScratchで
+        シミュレーションする」など横断的な学習も可能です。
+      </p>
+    </div>
+    <div class="rationale-card">
+      <h4><span class="rationale-num">2</span> mBotを中級どまりにした理由</h4>
+      <p>
+        mBotはハードウェアの制約上、初・中級で扱えるプログラミング概念（順次・反復・条件分岐）
+        が中核です。上級以降の「複雑なアルゴリズム設計」や「作品性」を追求するには
+        Scratchの方が適しています。また、mBotは1台あたりのコスト・管理負担が高く、
+        習得すべき概念が明確なため「深く短く」学ぶ設計が合理的です。
+        mBotで得た「センサー → 判断 → 動作」という思考は、そのままScratch上位レベルに転用されます。
+      </p>
+    </div>
+    <div class="rationale-card">
+      <h4><span class="rationale-num">3</span> 初級からCanva・Scratch両方を学ぶ理由</h4>
+      <p>
+        初級生徒は「作った！見せたい！」という承認欲求が強い時期です。
+        Canvaを初級から導入することで、Scratchのプログラムや絵を
+        すぐにカード・ポスターとして「完成物」に昇華でき、
+        自己効力感と保護者へのアウトプットが得られます。
+        これがモチベーション維持と継続率向上に直結します。
+      </p>
+    </div>
+    <div class="rationale-card">
+      <h4><span class="rationale-num">4</span> 小学生の発達段階との整合</h4>
+      <p>
+        <strong>低学年（1〜2年）：</strong>具体的操作期 → 視覚的・体験的なCanva・mBot中心<br>
+        <strong>中学年（3〜4年）：</strong>抽象思考の萌芽 → Scratchで変数・条件を学ぶ中級へ<br>
+        <strong>高学年（5〜6年）：</strong>論理的思考が発達 → 上級のゲーム設計・動画制作へ<br><br>
+        ピアジェの認知発達理論に基づき、「体験→模倣→応用→創造」の流れを
+        4レベルで自然に辿れるよう設計しています。
+      </p>
+    </div>
+    <div class="rationale-card">
+      <h4><span class="rationale-num">5</span> 超上級でAI・発信を重視する理由</h4>
+      <p>
+        2024年以降、Canvaに搭載されたAI機能（Magic Write、AI画像生成）は
+        プロのクリエイターも活用するレベルに達しています。
+        超上級では「AIを道具として使いこなす」メタスキルを育て、
+        作品を外部に発信（発表会・SNS・ポートフォリオ）することで
+        「社会との接続」を体験します。これはクリエットの理念
+        「創作活動を通じた自己表現と地域貢献」に直結します。
+      </p>
+    </div>
+    <div class="rationale-card">
+      <h4><span class="rationale-num">6</span> クリエットの理念との整合</h4>
+      <p>
+        クリエット（Creatte）は「創作活動に関心のある小中学生」を本来のターゲットとし、
+        「学校とは違う第三の場所」としての機能も持ちます。
+        このカリキュラムは「正解のないものを作る体験」を中心に置き、
+        作品の完成度よりも<strong>プロセスの楽しさ・試行錯誤・仲間との協働</strong>を
+        大切にする設計です。発表会での作品共有や保護者への報告も組み込み、
+        コミュニティとしての価値を高めます。
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== STUDENT TYPES ===== -->
+  <div class="section-title">
+    <div class="icon" style="background:#FFF0E8">👦</div>
+    生徒タイプ別 推奨ルート
+  </div>
+  <p class="section-sub">入会時の特性・目的に応じた最適な学習パス</p>
+  <div class="section-divider"></div>
+
+  <div class="student-types">
+    <div class="student-card">
+      <div class="student-avatar">🎨</div>
+      <h4>デザイン好きタイプ</h4>
+      <p>絵を描くのが好き、かわいいものが好き、SNSに興味がある</p>
+      <span class="student-path" style="background:#EDE0FF;color:#5B1F9E">Canva先行 → Scratch → 超上級Canvaへ</span>
+    </div>
+    <div class="student-card">
+      <div class="student-avatar">🎮</div>
+      <h4>ゲーム好きタイプ</h4>
+      <p>ゲームで遊ぶのが好き、「自分でゲームを作りたい」と思っている</p>
+      <span class="student-path" style="background:#FFE8D9;color:#CC4400">Scratch先行 → Canvaでゲームポスター制作</span>
+    </div>
+    <div class="student-card">
+      <div class="student-avatar">🤖</div>
+      <h4>ロボット好きタイプ</h4>
+      <p>工作・レゴが好き、動くものに興味がある、理科が得意</p>
+      <span class="student-path" style="background:#D9EDFF;color:#0055CC">mBot先行 → Scratchでセンサー応用 → 中級へ</span>
+    </div>
+    <div class="student-card">
+      <div class="student-avatar">🌱</div>
+      <h4>はじめてタイプ</h4>
+      <p>PCほぼ未経験、なんとなく興味があって入会した、内気な子</p>
+      <span class="student-path" style="background:#D9FFE8;color:#007744">Canva初級からゆっくりスタート → 自信をつける</span>
+    </div>
+  </div>
+
+  <!-- ===== ASSESSMENT ===== -->
+  <div class="section-title">
+    <div class="icon" style="background:#FFF0E8">✅</div>
+    レベルアップ基準（移行チェックリスト）
+  </div>
+  <p class="section-sub">次のレベルに進むための達成確認項目</p>
+  <div class="section-divider"></div>
+
+  <table class="assessment-table">
+    <thead>
+      <tr>
+        <th>現レベル</th>
+        <th>Canva 達成確認</th>
+        <th>Scratch 達成確認</th>
+        <th>mBot 達成確認</th>
+        <th>移行タイミング</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="check-badge" style="background:#D9FFE8;color:#007744">初級 → 中級</span></td>
+        <td>テンプレ改変でオリジナルポスターを1枚完成できる</td>
+        <td>スプライトをキーボードで動かすアニメを作れる</td>
+        <td>ロボットを組み立て、LEDとブザーを自分でプログラムできる</td>
+        <td>おおむね6ヶ月〜1年<br>教師の総合評価</td>
+      </tr>
+      <tr>
+        <td><span class="check-badge" style="background:#D9EDFF;color:#0055CC">中級 → 上級</span></td>
+        <td>グループで共同スライドを仕上げ、発表できる</td>
+        <td>変数でスコアが増えるゲームを1本完成できる</td>
+        <td>ライントレース走行を成功させられる（中級修了）</td>
+        <td>おおむね1〜1.5年<br>作品提出 + 発表</td>
+      </tr>
+      <tr>
+        <td><span class="check-badge" style="background:#FFE8D9;color:#CC4400">上級 → 超上級</span></td>
+        <td>動画付きプレゼンを自力で制作できる</td>
+        <td>複数ステージを持つゲームを完成・発表できる</td>
+        <td colspan="1" style="color:#999;font-style:italic;">— mBotは中級で完了 —</td>
+        <td>おおむね2年〜<br>作品発表会を通過</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <h4>📚 参考資料・リサーチ元</h4>
+    <ul style="list-style:none;padding:0;line-height:2">
+      <li>・ Google Drive「クリエットカリキュラムフォルダ」「議事録（複数内容）」「職務経歴書」「セッション記録」</li>
+      <li>・ <a href="https://edtechzine.jp/article/detail/7298" target="_blank">EdTechZine — Canvaを授業や係活動で活用しよう！</a></li>
+      <li>・ <a href="https://edu.watch.impress.co.jp/docs/report/1607804.html" target="_blank">Impress — 新しいCanva for Education で何ができる？</a></li>
+      <li>・ <a href="https://robogaku.jp/news/2020/robotprogramming03.html" target="_blank">ロボ學 — mBotではじめてのロボットプログラミング</a></li>
+      <li>・ <a href="https://www.mext.go.jp/miraino_manabi/content/483.html" target="_blank">文部科学省 未来の学びコンソーシアム — mBot</a></li>
+      <li>・ <a href="https://azby.fmworld.net/kids/fom/index_plain.html" target="_blank">富士通 — mBotで楽しむ レッツ！ロボットプログラミング</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Creatte（クリエット）</strong>
+  <p style="margin-top:8px;">カリキュラム構成案 2026年3月 策定 ｜ 対象：小学生（1〜6年生）｜ 作成支援：Claude（Cowork mode）</p>
+</div>
+
+</body>
+</html>
